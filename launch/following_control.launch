@@ -2,7 +2,7 @@
 <launch>
 
   <!-- Load joint controller configurations from YAML file to parameter server -->
-  <rosparam file="$(find platooning_tracking_control)/config/platooning_tracking_control.yaml" command="load"/>
+  <rosparam file="$(find platooning_tracking_control)/config/following_control.yaml" command="load"/>
 
   <!-- load the controllers -->
   <!--node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
@@ -10,14 +10,14 @@
 					  left_position_controller
 					  right_position_controller"/-->
   <node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
-	output="screen" ns="/leading_vehicle" args="joint_state_controller
-					  left_position_controller
-					  right_position_controller"/>
+	output="screen" ns="/following_vehicle" args="f1_joint_state_controller
+					  f1_left_position_controller
+					  f1_right_position_controller"/>
 
 
   <!-- convert joint states to TF transforms for rviz, etc -->
-  <!--node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
 	respawn="false" output="screen">
-  </node-->
+  </node>
 
 </launch>
