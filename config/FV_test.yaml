@@ -1,0 +1,27 @@
+following_vehicle:
+  # Publish all joint states -----------------------------------
+  FV_joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Velocity Controllers ---------------------------------------
+  FV_left_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: FV_front_left
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  FV_right_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: FV_front_right 
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  # Position Controllers ---------------------------------------
+  FV_left_position_controller:
+    joint: FV_left_steering_hinge_joint
+    type: effort_controllers/JointPositionController
+    pid: {p: 1.0, i: 0.0, d: 0.5}
+  FV_right_position_controller:
+    joint: FV_right_steering_hinge_joint
+    type: effort_controllers/JointPositionController
+    pid: {p: 1.0, i: 0.0, d: 0.5}
+
+

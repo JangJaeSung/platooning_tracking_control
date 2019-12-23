@@ -1,0 +1,27 @@
+leading_vehicle:
+  # Publish all joint states -----------------------------------
+  LV_joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50  
+  
+  # Velocity Controllers ---------------------------------------
+  LV_left_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: LV_front_left
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+  LV_right_velocity_controller:
+    type: effort_controllers/JointVelocityController
+    joint: LV_front_right 
+    pid: {p: 1.0, i: 0.0, d: 0.0}
+
+  # Position Controllers ---------------------------------------
+  LV_left_position_controller:
+    joint: LV_left_steering_hinge_joint
+    type: effort_controllers/JointPositionController
+    pid: {p: 1.0, i: 0.0, d: 0.5}
+  LV_right_position_controller:
+    joint: LV_right_steering_hinge_joint
+    type: effort_controllers/JointPositionController
+    pid: {p: 1.0, i: 0.0, d: 0.5}
+
+
